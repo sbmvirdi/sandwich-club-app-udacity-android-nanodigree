@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,10 +65,18 @@ public class DetailActivity extends AppCompatActivity {
 
     private void populateUI(Sandwich sandwich) {
 
-
+        // getting description
         mDesc.setText(sandwich.getDescription());
-        mIngredients.setText(sandwich.getIngredients().toString());
-        mAlsoKnown.setText(sandwich.getAlsoKnownAs().toString());
+
+        // getting ingredients from Array List
+        String ingredients = TextUtils.join(",",sandwich.getIngredients());
+        mIngredients.setText(ingredients);
+
+        // getting alsoknownas from ArrayList
+        String alsoknownas = TextUtils.join(",",sandwich.getAlsoKnownAs());
+        mAlsoKnown.setText(alsoknownas);
+
+        // getting origin
         mOrigin.setText(sandwich.getPlaceOfOrigin());
 
     }
